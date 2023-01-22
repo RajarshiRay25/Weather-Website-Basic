@@ -9,6 +9,8 @@ const options = {
 
 
 timeNow = document.getElementById('timeNow');
+dateNow = document.getElementById('dateNow');
+
 // Update the clock every second
 setInterval(() => {
     // Get the current date and time
@@ -16,9 +18,11 @@ setInterval(() => {
   
     // Format the time as a string (HH:MM:SS)
     const time = now.toLocaleTimeString();
+    const date = now.toLocaleDateString();
   
     // Update the clock element with the current time
     timeNow.innerHTML = time;
+    dateNow.innerHTML = date;
 }, 1000);
     
 
@@ -39,7 +43,7 @@ const resultWeather = (city) => {
             wind_speed.innerHTML = response.wind_speed;
             sunrise.innerHTML = response.sunrise = new Date(response.sunrise * 1000).toLocaleTimeString();
             sunset.innerHTML = response.sunset = new Date(response.sunset * 1000).toLocaleTimeString();
-            dateNow.innerHTML = new Date().toLocaleDateString();
+
             
         })
 
