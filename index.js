@@ -1,5 +1,4 @@
 // Weather API
-
 const options = {
     method: 'GET',
     headers: {
@@ -37,3 +36,13 @@ search.addEventListener('click', (e) => {
     e.preventDefault();
     resultWeather(city.value);
 })
+
+var pageHasLoaded = false;
+
+window.onload = function() {
+    if (!pageHasLoaded) {
+        //code to execute when page loads for the first time
+        resultWeather("Kolkata"); // this is the location you want to show weather on page load
+        pageHasLoaded = true;
+    }
+};
