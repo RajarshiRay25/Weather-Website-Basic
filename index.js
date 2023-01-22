@@ -7,6 +7,21 @@ const options = {
     }
 };
 
+
+timeNow = document.getElementById('timeNow');
+// Update the clock every second
+setInterval(() => {
+    // Get the current date and time
+    const now = new Date();
+  
+    // Format the time as a string (HH:MM:SS)
+    const time = now.toLocaleTimeString();
+  
+    // Update the clock element with the current time
+    timeNow.innerHTML = time;
+}, 1000);
+    
+
 const resultWeather = (city) => {
     cityName.innerHTML = city;
     fetch(`https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=${city}`, options)
@@ -19,15 +34,13 @@ const resultWeather = (city) => {
             humidity.innerHTML = response.humidity;
             max_temp.innerHTML = response.max_temp;
             min_temp.innerHTML = response.min_temp;
-
-            sunrise.innerHTML = response.sunrise = new Date(response.sunrise * 1000).toLocaleTimeString();
-
-            sunset.innerHTML = response.sunset = new Date(response.sunset * 1000).toLocaleTimeString();
             temp.innerHTML = response.temp;
-            dateNow.innerHTML = new Date().toLocaleDateString();
             wind_degrees.innerHTML = response.wind_degrees;
             wind_speed.innerHTML = response.wind_speed;
-            timeNow.innerHTML = new Date().toLocaleTimeString();
+            sunrise.innerHTML = response.sunrise = new Date(response.sunrise * 1000).toLocaleTimeString();
+            sunset.innerHTML = response.sunset = new Date(response.sunset * 1000).toLocaleTimeString();
+            dateNow.innerHTML = new Date().toLocaleDateString();
+            
         })
 
         .catch(err => console.error(err));
@@ -39,7 +52,7 @@ search.addEventListener('click', (e) => {
 
 var pageHasLoaded = false;
 
-window.onload = function() {
+window.onload = function () {
     if (!pageHasLoaded) {
         //code to execute when page loads for the first time
         resultWeather("Kolkata"); // this is the location you want to show weather on page load
